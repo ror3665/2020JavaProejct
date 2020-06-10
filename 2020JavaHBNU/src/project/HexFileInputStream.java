@@ -10,6 +10,7 @@ import java.io.FileReader;
 public class HexFileInputStream implements PacketIteratorInterface {
 	private static HexFileInputStream uniqueInstance = new HexFileInputStream(); //Singleton
 	private ArrayList<NodePacket> packetList;
+	private String path;
 	
 	private HexFileInputStream() {
 		packetList = new ArrayList<>();
@@ -20,6 +21,7 @@ public class HexFileInputStream implements PacketIteratorInterface {
 	}
 
 	/** Import Hex text file from local drive
+	 * @param path 
 	 * @throws IOException
 	 */
 	public void savePacketsfromFile() throws IOException {
@@ -27,7 +29,8 @@ public class HexFileInputStream implements PacketIteratorInterface {
 		String sLine = null;
 		StringBuilder sb = new StringBuilder();
 		
-		File file = new File("C:/wireshark/sample.txt");
+		
+		File file = new File(path);
 		if (file.exists()) {
 			BufferedReader inFile = new BufferedReader(new FileReader(file));
 			while ((sLine = inFile.readLine()) != null) {
@@ -40,6 +43,10 @@ public class HexFileInputStream implements PacketIteratorInterface {
 			addPacket(sb);
 			inFile.close();
 		}
+	}
+	
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	/**

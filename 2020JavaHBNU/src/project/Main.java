@@ -4,8 +4,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		String path = "C:/wireshark/sample.txt";
+		
 		MenuItem menuItem = new MenuItem();
-		Interpreter interpreter = Interpreter.getInstance();
+		Interpreter interpreter = new Interpreter(path);
 		
 		DisplayHexBinaryOnCommand displayHexBinaryOnCommand = new DisplayHexBinaryOnCommand(interpreter);
 		DisplayTCPnUDPonCommand displayTCPnUDPonCommand = new DisplayTCPnUDPonCommand(interpreter);
