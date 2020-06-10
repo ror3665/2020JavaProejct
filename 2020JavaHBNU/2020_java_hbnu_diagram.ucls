@@ -3,208 +3,278 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="project.DisplayPackets" project="2020JavaHBNU" 
     file="/2020JavaHBNU/src/project/DisplayPackets.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="896" y="252"/>    
+    <position height="-1" width="-1" x="1007" y="412"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="project.NodePacket" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/NodePacket.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1438" y="585"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="project.TransportProtocolComponent" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/TransportProtocolComponent.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="741" y="486"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="project.HexFileInputStream" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/HexFileInputStream.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1331" y="358"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="5" language="java" name="project.PacketIteratorInterface" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/PacketIteratorInterface.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1021" y="414"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <class id="6" language="java" name="project.NodeInterpretedTCP" project="2020JavaHBNU" 
+  <class id="2" language="java" name="project.NodeInterpretedTCP" project="2020JavaHBNU" 
     file="/2020JavaHBNU/src/project/NodeInterpretedTCP.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="471" y="746"/>    
+    <position height="-1" width="-1" x="519" y="880"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="project.NodeInterpretedUDP" project="2020JavaHBNU" 
+  <class id="3" language="java" name="project.NodeInterpretedUDP" project="2020JavaHBNU" 
     file="/2020JavaHBNU/src/project/NodeInterpretedUDP.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="682" y="750"/>    
+    <position height="-1" width="-1" x="731" y="880"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="project.NodeTCPPacketHex" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/NodeTCPPacketHex.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1877" y="1212"/>    
+  <class id="4" language="java" name="project.NodePacket" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/NodePacket.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1685" y="582"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="project.TransportInterpreter" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/TransportInterpreter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="612" y="249"/>    
+  <class id="5" language="java" name="project.TransportProtocolComponent" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/TransportProtocolComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="703" y="613"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="project.NodeInterpretedPacket" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/NodeInterpretedPacket.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2393" y="716"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="project.TransportProtocol" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/TransportProtocol.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="921" y="769"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="project.NodeUDPPacketHex" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/NodeUDPPacketHex.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2242" y="1122"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="project.Help" project="2020JavaHBNU" file="/2020JavaHBNU/src/project/Help.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="155" x="3099" y="75"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="14" language="java" name="project.HelpInterface" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/HelpInterface.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="155" x="3099" y="538"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <class id="15" language="java" name="project.NodeBasicPackeHex" project="2020JavaHBNU" 
-    file="/2020JavaHBNU/src/project/NodeBasicPackeHex.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1330" y="1359"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="16" language="java" name="project.DisplayInterface" project="2020JavaHBNU" 
+  <interface id="6" language="java" name="project.DisplayInterface" project="2020JavaHBNU" 
     file="/2020JavaHBNU/src/project/DisplayInterface.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="729" y="94"/>    
+    <position height="-1" width="-1" x="838" y="269"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <realization id="17">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="16"/>  
-  </realization>  
-  <realization id="18">    
-    <end type="SOURCE" refId="4"/>    
+  <class id="7" language="java" name="project.HexFileInputStream" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/HexFileInputStream.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1367" y="587"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="project.PacketIteratorInterface" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/PacketIteratorInterface.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1361" y="409"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="project.InterpretedTCP" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/InterpretedTCP.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2081" y="1018"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="project.InterpretedUDP" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/InterpretedUDP.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2452" y="1015"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="project.NodeTCPPacketHex" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/NodeTCPPacketHex.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2267" y="145"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="project.Main" project="2020JavaHBNU" file="/2020JavaHBNU/src/project/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="251" y="139"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="project.TransportInterpreter" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/TransportInterpreter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="694" y="405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="project.TransportProtocol" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/TransportProtocol.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="974" y="898"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="project.NodeUDPPacketHex" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/NodeUDPPacketHex.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2646" y="212"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="project.NodeInterpretedPacket" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/NodeInterpretedPacket.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1940" y="272"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="project.PacketInterpreter" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/PacketInterpreter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2249" y="662"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="project.NodeBasicPackeHex" project="2020JavaHBNU" 
+    file="/2020JavaHBNU/src/project/NodeBasicPackeHex.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3037" y="711"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="20">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="21" name="interpretedTCPList"/>      
+      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="23">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="6"/>  
   </realization>  
-  <association id="19">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="20" name="packetIterator"/>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
+  <association id="24">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="25" name="uniqueInstance"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="27">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <association id="28">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="29" name="TCPPacketList"/>      
+      <multiplicity id="30" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="31">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="33">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="34" name="allInterpretedPackets"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="22">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="23" name="packetList"/>      
-      <multiplicity id="24" minimum="0" maximum="2147483647"/>    
+  <association id="36">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="37" name="interpretedUDPList"/>      
+      <multiplicity id="38" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="25">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="16"/>  
-  </realization>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
+  <generalization id="39">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
   </generalization>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="28">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="29" name="uniqueInstance"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
+  <association id="40">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="41" name="trimmedPacketList"/>      
+      <multiplicity id="42" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="31">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="32">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="33" name="allInterpretedPackets"/>      
-      <multiplicity id="34" minimum="0" maximum="1"/>    
+  <association id="43">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="44" name="basicPacketList"/>      
+      <multiplicity id="45" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="35">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="14"/>  
+  <realization id="46">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
   </realization>  
+  <realization id="47">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <association id="48">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="49" name="UDPPacketList"/>      
+      <multiplicity id="50" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="52" name="packetIterator"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="55" name="packetList"/>      
+      <multiplicity id="56" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

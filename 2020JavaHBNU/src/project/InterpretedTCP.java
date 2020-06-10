@@ -2,7 +2,7 @@ package project;
 
 import java.util.ArrayList;
 
-public class InterpretedTCP extends PacketUnInterpreter {
+public class InterpretedTCP extends PacketInterpreter {
 
 	@Override
 	ArrayList<NodeInterpretedPacket> createProtocolInterpreter() {

@@ -3,7 +3,7 @@ package project;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
-public abstract class PacketUnInterpreter {
+public abstract class PacketInterpreter {
 	
 	private ArrayList<NodePacket> trimmedPacketList;
 	private ArrayList<NodeBasicPackeHex> basicPacketList;
