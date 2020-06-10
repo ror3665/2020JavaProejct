@@ -3,20 +3,27 @@ package project;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
-public class PacketInterpreter implements ProtocolInterface {
-
+public abstract class PacketUnInterpreter {
+	
 	private ArrayList<NodePacket> trimmedPacketList;
 	private ArrayList<NodeBasicPackeHex> basicPacketList;
 	private ArrayList<NodeTCPPacketHex> TCPPacketList;
 	private ArrayList<NodeUDPPacketHex> UDPPacketList;
-	private ArrayList<InterpretedPacketNode> interpretedTCPList;
-	private ArrayList<InterpretedPacketNode> interpretedUDPList;
-
+	protected ArrayList<NodeInterpretedPacket> interpretedTCPList;
+	protected ArrayList<NodeInterpretedPacket> interpretedUDPList;
+	
+	final ArrayList<NodeInterpretedPacket> prepareInterpreter() {
+		trimSpacePacketList();
+		organizePacket();
+		createPacketInterpreter();
+		return createProtocolInterpreter();	
+	}
+	
 	/**
 	 * 패킷 사이의 공백 제거
 	 */
-	public void trimSpacePacketList() {
-		HexFileInputStream hexFileInputStream = HexFileInputStream.getInstance();
+	private void trimSpacePacketList() {
+		HexFileInputStream hexFileInputStream = HexFileInputStream.getInstance(); //Singleton object
 		trimmedPacketList = new ArrayList<>();
 		TCPPacketList = new ArrayList<>();
 		UDPPacketList = new ArrayList<>();
@@ -27,10 +34,8 @@ public class PacketInterpreter implements ProtocolInterface {
 			trimmedPacketList.add(new NodePacket(packet));
 		}
 	}
-
-	@Override
-	public void organizePacket() {
-
+	
+	private void organizePacket() {
 		String frame;
 		String destinationMacAddress;
 		String sourceMacAddress;
@@ -88,7 +93,7 @@ public class PacketInterpreter implements ProtocolInterface {
 
 				TCPPacketList.add(new NodeTCPPacketHex(Integer.toString(i), sequenceNumber, acknowledgmentNumber,
 						tCPheaderLength, tCPflags, windowSizeValue, tCPchecksum, urgentPointer, optionOrData));
-				UDPPacketList.add(new NodeUDPPacketHex(Integer.toString(i), null, null, null));
+				UDPPacketList.add(new NodeUDPPacketHex(Integer.toString(i), null, null, null)); //UDP ID값 분별을 위해
 			} else if (procotolName.equals("11")) {
 				String length = packet.substring(76, 80);
 				String uDPchecksum = packet.substring(80, 84);
@@ -96,13 +101,12 @@ public class PacketInterpreter implements ProtocolInterface {
 
 				UDPPacketList.add(new NodeUDPPacketHex(Integer.toString(i), length, uDPchecksum, data));
 				TCPPacketList
-						.add(new NodeTCPPacketHex(Integer.toString(i), null, null, null, null, null, null, null, null));
+						.add(new NodeTCPPacketHex(Integer.toString(i), null, null, null, null, null, null, null, null)); // TCP ID값 분별을 위해
 			}
 		}
 	}
-
-	@Override
-	public void createTransportProtocolInterpreter() {
+	
+	private void createPacketInterpreter() {
 		StringBuilder interpretedPacket = new StringBuilder();
 		interpretedTCPList = new ArrayList<>();
 		interpretedUDPList = new ArrayList<>();
@@ -143,20 +147,20 @@ public class PacketInterpreter implements ProtocolInterface {
 
 			if (basicPacketList.get(i).getProcotolName().equals("06")) {
 				interpretedPacket.append(createTCPInterpreter(Integer.parseInt(basicPacketList.get(i).getID())));
-				interpretedTCPList.add(new InterpretedPacketNode(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
+				interpretedTCPList.add(new NodeInterpretedPacket(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
 			} else if (basicPacketList.get(i).getProcotolName().equals("11")) {
 				interpretedPacket.append(createUDPInterpreter(Integer.parseInt(basicPacketList.get(i).getID())));
-				interpretedUDPList.add(new InterpretedPacketNode(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
+				interpretedUDPList.add(new NodeInterpretedPacket(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
 			}
 
 			interpretedPacket.setLength(0); // set a stringBuffer size to '0' size
 		}
+		
 	}
-
+	
 	/*
 	 * 패킷이 TCP일 경우의 변환
 	 */
-	@Override
 	public String createTCPInterpreter(int index) {
 		StringBuilder interpretedTCPpacket = new StringBuilder();
 		int i = index;
@@ -180,7 +184,7 @@ public class PacketInterpreter implements ProtocolInterface {
 	/*
 	 * 패킷이 UDP일 경우의 변환
 	 */
-	@Override
+	
 	public String createUDPInterpreter(int index) {
 		int i = index;
 		StringBuilder interpretedUDPpacket = new StringBuilder();
@@ -191,7 +195,10 @@ public class PacketInterpreter implements ProtocolInterface {
 
 		return interpretedUDPpacket.toString();
 	}
-
+	
+	abstract ArrayList<NodeInterpretedPacket> createProtocolInterpreter();
+	
+	
 	/**
 	 * @param macAddress
 	 * @return 맥주소 사이에 콜론(:)을 추가함
@@ -260,28 +267,13 @@ public class PacketInterpreter implements ProtocolInterface {
 		return binHeadLength;
 	}
 
-	/**
-	 * @param headerLengthPacket
-	 * @return TCP headerLengthPacket의 이진값
-	 */
-	private String TCPHeaderLengthBin(String headerLengthPacket) {
-		String headerLength = "" + headerLengthPacket.charAt(0);
-		String binHeadLength = binaryValue(headerLength);
-		return binHeadLength;
-	}
 
-	private String TCPHeaderLength(String headerLengthPacket) {
-		String headerLength = "" + headerLengthPacket.charAt(0);
-		String decHeaderLength = decValue(headerLength);
-		int decHeaderInt = Integer.parseInt(decHeaderLength);
-		return Integer.toString(decHeaderInt * 4);
-	}
 
 	/**
 	 * @param hexValue
 	 * @return 한자리의 16진수 -> 2진수 변환
 	 */
-	private String binaryValue(String hexValue) {
+	protected String binaryValue(String hexValue) {
 		String binaryResult = "";
 		int dec = Integer.parseInt(hexValue, 16);
 		String binaryValue = Integer.toBinaryString(dec);
@@ -308,7 +300,7 @@ public class PacketInterpreter implements ProtocolInterface {
 	 * @param hexValue
 	 * @return 16진수 -> 10진수
 	 */
-	private String decValue(String hexValue) {
+	protected String decValue(String hexValue) {
 		String decResult = "";
 		int dec = new BigInteger(hexValue, 16).intValue();
 		decResult = Integer.toString(Math.abs(dec));
@@ -371,18 +363,26 @@ public class PacketInterpreter implements ProtocolInterface {
 
 		return ipAddress;
 	}
-
+	
 	/**
-	 * @return 변환된 TCP 패킷을 리턴
+	 * @param headerLengthPacket
+	 * @return TCP headerLengthPacket의 이진값
 	 */
-	public ArrayList<InterpretedPacketNode> getInterpretedTCPList() {
-		return interpretedTCPList;
+	private String TCPHeaderLengthBin(String headerLengthPacket) {
+		String headerLength = "" + headerLengthPacket.charAt(0);
+		String binHeadLength = binaryValue(headerLength);
+		return binHeadLength;
 	}
 
 	/**
-	 * @return 변한된 UDP 패킷을 리턴
+	 * @param headerLengthPacket
+	 * @return TCP 헤더의 길이
 	 */
-	public ArrayList<InterpretedPacketNode> getInterpretedUDPList() {
-		return interpretedUDPList;
+	private String TCPHeaderLength(String headerLengthPacket) {
+		String headerLength = "" + headerLengthPacket.charAt(0);
+		String decHeaderLength = decValue(headerLength);
+		int decHeaderInt = Integer.parseInt(decHeaderLength);
+		return Integer.toString(decHeaderInt * 4);
 	}
+
 }

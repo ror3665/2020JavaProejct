@@ -1,24 +1,11 @@
 package project;
 
-public class InterpretedUDP extends TransportProtocolComponent {
-	private int ID;
-	private String value;
-	
-	public InterpretedUDP(int ID, String value) {
-		this.ID = ID;
-		this.value = value;
-	}
+import java.util.ArrayList;
 
-	public int getID() {
-		return ID;
-	}
-	public String getValue() {
-		return value;
-	}
-	
-	public void display() {
-		System.out.println("\n" + getValue());
-	}
-	
+public class InterpretedUDP extends PacketUnInterpreter {
 
+	@Override
+	ArrayList<NodeInterpretedPacket> createProtocolInterpreter() {
+		return interpretedUDPList;
+	}
 }

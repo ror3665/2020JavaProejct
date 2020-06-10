@@ -13,7 +13,4 @@ public class NodePacket {
 		return packet;
 	}
 
-	public void setPacket(String packet) {
-		this.packet = packet;
-	}
 }

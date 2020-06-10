@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 
 public class HexFileInputStream implements PacketIteratorInterface {
-	private static HexFileInputStream uniqueInstance = new HexFileInputStream();
+	private static HexFileInputStream uniqueInstance = new HexFileInputStream(); //Singleton
 	private ArrayList<NodePacket> packetList;
 	
 	private HexFileInputStream() {
@@ -19,6 +19,9 @@ public class HexFileInputStream implements PacketIteratorInterface {
 		return uniqueInstance;
 	}
 
+	/** Import Hex text file from local drive
+	 * @throws IOException
+	 */
 	public void savePacketsfromFile() throws IOException {
 
 		String sLine = null;
@@ -39,11 +42,18 @@ public class HexFileInputStream implements PacketIteratorInterface {
 		}
 	}
 
+	/**
+	 * @param 하나의 패킷라인을 컬렉션에 저장
+	 */
 	private void addPacket(StringBuilder sb) {
 		String newLine = sb.toString();
 		packetList.add(new NodePacket(newLine));
 	}
 
+	/**
+	 * @param sLine
+	 * @return 정리된 newLine
+	 */
 	private String trimUpPacket(String sLine) {
 		int indexOfEnd = sLine.indexOf("   ");
 		return sLine.substring(6, indexOfEnd) + " ";

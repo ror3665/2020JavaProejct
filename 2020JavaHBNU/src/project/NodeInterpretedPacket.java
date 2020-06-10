@@ -1,11 +1,11 @@
 package project;
 
-public class InterpretedPacketNode {
+public class NodeInterpretedPacket {
 
 	private int ID;
 	private String value;
 
-	public InterpretedPacketNode(int iD, String value) {
+	public NodeInterpretedPacket(int iD, String value) {
 		super();
 		ID = iD;
 		this.value = value;

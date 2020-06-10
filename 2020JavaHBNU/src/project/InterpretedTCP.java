@@ -1,27 +1,12 @@
 package project;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 
-public class InterpretedTCP extends TransportProtocolComponent {
-	private int ID;
-	private String value;
-	
-	public InterpretedTCP(int ID, String value) {
-		this.ID = ID;
-		this.value = value;
-	}
+public class InterpretedTCP extends PacketUnInterpreter {
 
-	public int getID() {
-		return ID;
+	@Override
+	ArrayList<NodeInterpretedPacket> createProtocolInterpreter() {
+		return interpretedTCPList;
+
 	}
-	
-	public String getValue() {
-		return value;
-	}
-	
-	public void display() {
-		System.out.println("\n" + getValue());
-	}
-	
-	
 }

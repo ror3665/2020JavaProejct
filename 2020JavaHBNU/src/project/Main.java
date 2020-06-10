@@ -5,59 +5,55 @@ import java.util.ArrayList;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException{
-		
+	public static void main(String[] args) throws IOException {
 		HexFileInputStream hexFileInputStream = HexFileInputStream.getInstance();
 		hexFileInputStream.savePacketsfromFile();
 		
+		//HEX 바이너리 값 출력
 		//DisplayPackets displayPackets = new DisplayPackets(hexFileInputStream);
 		//displayPackets.displayAllPackets();
 		
-		PacketInterpreter packetInterpreter = new PacketInterpreter();
-		packetInterpreter.trimSpacePacketList();
-		packetInterpreter.organizePacket();
-		packetInterpreter.createTransportProtocolInterpreter();
-		
-		/*
-		ArrayList<InterpretedPacketNode> list = packetInterpreter.getInterpretedTCPList();
-		for(int i=0; i<list.size(); i++) {
-			System.out.println("ID: "+  list.get(i).getID() +"\n" +list.get(i).getValue());
-		}
-		
-		ArrayList<InterpretedPacketNode> list2 = packetInterpreter.getInterpretedUDPList();
-		for(int i=0; i<list2.size(); i++) {
-			System.out.println("ID: "+  list2.get(i).getID() +"\n" + list2.get(i).getValue());
-		}
-		*/
-		
-
-		TransportProtocolComponent tcp = new TransportProtocol("TCP");
-		TransportProtocolComponent udp = new TransportProtocol("UDP");
-		TransportProtocolComponent allInterpretedPackets = new TransportProtocol("모든 분석 정보");
+		//PacketInterpreter packetInterpreter = new PacketInterpreter();
+		//packetInterpreter.trimSpacePacketList();
+		//packetInterpreter.organizePacket();
+		//packetInterpreter.createTransportProtocolInterpreter();
+		//기본처리
 		
 		
-		allInterpretedPackets.add(tcp);
-		allInterpretedPackets.add(udp);
+		//템플릿 메소드 패턴
+		InterpretedTCP tcp = new InterpretedTCP();
+		InterpretedUDP udp = new InterpretedUDP();
 		
-		ArrayList<InterpretedPacketNode> list = packetInterpreter.getInterpretedTCPList();
-		for(int i=0; i<list.size(); i++) {
-			tcp.add(new InterpretedTCP(list.get(i).getID(), list.get(i).getValue()));
-		}
+		ArrayList<NodeInterpretedPacket> interpretedTCPList =   tcp.prepareInterpreter();
+		ArrayList<NodeInterpretedPacket> interpretedUDPList = udp.prepareInterpreter();
 		
-		ArrayList<InterpretedPacketNode> list2 = packetInterpreter.getInterpretedUDPList();
-		for(int i=0; i<list2.size(); i++) {
-			udp.add(new InterpretedUDP(list2.get(i).getID(), list2.get(i).getValue()));
-		}
-		
-		Interpreter interpreter = new Interpreter(tcp);
-		//interpreter.display();
-		
-		Interpreter interpreter2 = new Interpreter(udp);
-		//interpreter2.display();
-		
-		Interpreter interpreter3 = new Interpreter(allInterpretedPackets);
-		interpreter3.display();
-		
+		//컴포지트 패턴 사용
+				TransportProtocolComponent tcpComponent = new TransportProtocol("TCP");
+				TransportProtocolComponent udpCinoinent = new TransportProtocol("UDP");
+				TransportProtocolComponent allInterpretedPackets = new TransportProtocol("모든 분석 정보");
+				
+				
+				allInterpretedPackets.add(tcpComponent);
+				allInterpretedPackets.add(udpCinoinent);
+				
+				ArrayList<NodeInterpretedPacket> list = interpretedTCPList;
+				for(int i=0; i<list.size(); i++) {
+					tcpComponent.add(new NodeInterpretedTCP(list.get(i).getID(), list.get(i).getValue()));
+				}
+				
+				ArrayList<NodeInterpretedPacket> list2 = interpretedUDPList;
+				for(int i=0; i<list2.size(); i++) {
+					udpCinoinent.add(new NodeInterpretedUDP(list2.get(i).getID(), list2.get(i).getValue()));
+				}
+				
+				TransportInterpreter interpreter = new TransportInterpreter(tcpComponent);
+				//interpreter.display();
+				
+				TransportInterpreter interpreter2 = new TransportInterpreter(udpCinoinent);
+				interpreter2.display();
+				
+				TransportInterpreter interpreter3 = new TransportInterpreter(allInterpretedPackets);
+				//interpreter3.display();
 	}
 
 }
