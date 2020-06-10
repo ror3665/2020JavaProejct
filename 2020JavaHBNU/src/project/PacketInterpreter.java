@@ -9,6 +9,8 @@ public class PacketInterpreter implements ProtocolInterface {
 	private ArrayList<NodeBasicPackeHex> basicPacketList;
 	private ArrayList<NodeTCPPacketHex> TCPPacketList;
 	private ArrayList<NodeUDPPacketHex> UDPPacketList;
+	private ArrayList<InterpretedPacketNode> interpretedTCPList;
+	private ArrayList<InterpretedPacketNode> interpretedUDPList;
 
 	/**
 	 * 패킷 사이의 공백 제거
@@ -100,68 +102,94 @@ public class PacketInterpreter implements ProtocolInterface {
 	}
 
 	@Override
-	public void packetBasicInterpreter() {
+	public void createTransportProtocolInterpreter() {
+		StringBuilder interpretedPacket = new StringBuilder();
+		interpretedTCPList = new ArrayList<>();
+		interpretedUDPList = new ArrayList<>();
+
 		for (int i = 0; i < basicPacketList.size(); i++) {
 			int intFrame = Integer.parseInt(basicPacketList.get(i).getFrame());
-			System.out.println(
-					"------------------------------------------------------------------------------------------------------------------------------------------");
-			System.out.println("Frame " + basicPacketList.get(i).getID() + ": " + intFrame / 2 + " bytes on wire ("
-					+ intFrame * 4 + " bits), " + intFrame / 2 + " bytes captured (" + intFrame * 4 + " bits)");
-			System.out.println("Destination Mac Address: " + "("
-					+ addColon(basicPacketList.get(i).getDestinationMacAddress()) + ")");
-			System.out.println(
-					"Source Mac Address: " + "(" + addColon(basicPacketList.get(i).getSourceMacAddress()) + ")");
-			System.out.println("Type: " + distinguishIPversion(basicPacketList.get(i).getiPVersion()) + " (0x"
-					+ basicPacketList.get(i).getiPVersion() + ")");
-			System.out.println(HeaderLengthFront(basicPacketList.get(i).getHeaderLength()) + ".... = Version: "
-					+ basicPacketList.get(i).getHeaderLength().charAt(0));
-			System.out.println(".... " + HeaderLengthRear(basicPacketList.get(i).getHeaderLength())
+			interpretedPacket.append(
+					"Frame " + basicPacketList.get(i).getID() + ": " + intFrame / 2 + " bytes on wire (" + intFrame * 4
+							+ " bits), " + intFrame / 2 + " bytes captured (" + intFrame * 4 + " bits)" + "\n");
+			interpretedPacket.append("Destination Mac Address: " + "("
+					+ addColon(basicPacketList.get(i).getDestinationMacAddress()) + ")" + "\n");
+			interpretedPacket.append(
+					"Source Mac Address: " + "(" + addColon(basicPacketList.get(i).getSourceMacAddress()) + ")" + "\n");
+			interpretedPacket.append("Type: " + distinguishIPversion(basicPacketList.get(i).getiPVersion()) + " (0x"
+					+ basicPacketList.get(i).getiPVersion() + ")" + "\n");
+			interpretedPacket.append(HeaderLengthFront(basicPacketList.get(i).getHeaderLength()) + ".... = Version: "
+					+ basicPacketList.get(i).getHeaderLength().charAt(0) + "\n");
+			interpretedPacket.append(".... " + HeaderLengthRear(basicPacketList.get(i).getHeaderLength())
 					+ " = Header Length: " + calculateByte(basicPacketList.get(i).getHeaderLength().charAt(1))
-					+ " bytes " + "(" + basicPacketList.get(i).getHeaderLength().charAt(1) + ")");
-			System.out.println("Type Of Service: " + binaryValue(basicPacketList.get(i).getServiceType()));
-			System.out.println("Total Length: " + decValue(basicPacketList.get(i).getTotalLength()));
-			System.out.println("Identification: " + "0x" + basicPacketList.get(i).getIdentification() + " ("
-					+ decValue(basicPacketList.get(i).getIdentification()) + ")");
-			System.out.println("Flags: " + "0x" + basicPacketList.get(i).getFlags() + " "
-					+ distinguishFlags(basicPacketList.get(i).getFlags()));
-			System.out.println("Time to live: " + decValue(basicPacketList.get(i).getTimeToLive()));
-			System.out.println("Protocol: " + distinguishProtocol(basicPacketList.get(i).getProcotolName()));
-			System.out.println("Header checksum: " + "0x" + basicPacketList.get(i).getHeaderChecksum());
-			System.out.println("Source IP address: " + hexIPToDecIP(basicPacketList.get(i).getSourceIPAddress()));
-			System.out.println(
-					"Destination IP address :" + hexIPToDecIP(basicPacketList.get(i).getDestinationIPAddress()));
-			System.out.println("Source Port: " + decValue(basicPacketList.get(i).getSourcePort()));
-			System.out.println("Destination Port: " + decValue(basicPacketList.get(i).getDestinationPort()));
+					+ " bytes " + "(" + basicPacketList.get(i).getHeaderLength().charAt(1) + ")" + "\n");
+			interpretedPacket.append("Type Of Service: " + binaryValue(basicPacketList.get(i).getServiceType()) + "\n");
+			interpretedPacket.append("Total Length: " + decValue(basicPacketList.get(i).getTotalLength()) + "\n");
+			interpretedPacket.append("Identification: " + "0x" + basicPacketList.get(i).getIdentification() + " ("
+					+ decValue(basicPacketList.get(i).getIdentification()) + ")" + "\n");
+			interpretedPacket.append("Flags: " + "0x" + basicPacketList.get(i).getFlags() + " "
+					+ distinguishFlags(basicPacketList.get(i).getFlags()) + "\n");
+			interpretedPacket.append("Time to live: " + decValue(basicPacketList.get(i).getTimeToLive()) + "\n");
+			interpretedPacket
+					.append("Protocol: " + distinguishProtocol(basicPacketList.get(i).getProcotolName()) + "\n");
+			interpretedPacket.append("Header checksum: " + "0x" + basicPacketList.get(i).getHeaderChecksum() + "\n");
+			interpretedPacket
+					.append("Source IP address: " + hexIPToDecIP(basicPacketList.get(i).getSourceIPAddress()) + "\n");
+			interpretedPacket.append(
+					"Destination IP address :" + hexIPToDecIP(basicPacketList.get(i).getDestinationIPAddress()) + "\n");
+			interpretedPacket.append("Source Port: " + decValue(basicPacketList.get(i).getSourcePort()) + "\n");
+			interpretedPacket
+					.append("Destination Port: " + decValue(basicPacketList.get(i).getDestinationPort()) + "\n");
 
-			if (basicPacketList.get(i).getProcotolName().equals("06"))
-				packetTCPInterpreter(Integer.parseInt(basicPacketList.get(i).getID()));
-			else if (basicPacketList.get(i).getProcotolName().equals("11"))
-			packetUDPInterpreter(Integer.parseInt(basicPacketList.get(i).getID()));
+			if (basicPacketList.get(i).getProcotolName().equals("06")) {
+				interpretedPacket.append(createTCPInterpreter(Integer.parseInt(basicPacketList.get(i).getID())));
+				interpretedTCPList.add(new InterpretedPacketNode(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
+			} else if (basicPacketList.get(i).getProcotolName().equals("11")) {
+				interpretedPacket.append(createUDPInterpreter(Integer.parseInt(basicPacketList.get(i).getID())));
+				interpretedUDPList.add(new InterpretedPacketNode(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
+			}
+
+			interpretedPacket.setLength(0); // set a stringBuffer size to '0' size
 		}
 	}
 
+	/*
+	 * 패킷이 TCP일 경우의 변환
+	 */
 	@Override
-	public void packetTCPInterpreter(int index) {
+	public String createTCPInterpreter(int index) {
+		StringBuilder interpretedTCPpacket = new StringBuilder();
 		int i = index;
-		System.out.println("Sequence number (raw): " + decValue(TCPPacketList.get(i).getSequenceNumber()));
-		System.out.println("Acknowledgment number (raw): " + decValue(TCPPacketList.get(i).getAcknowledgmentNumber()));
-		System.out.println(TCPHeaderLengthBin(TCPPacketList.get(i).getSequenceNumber()) + " .... = Header Length:"
-				+ TCPHeaderLength(TCPPacketList.get(i).getSequenceNumber()) + "bytes");
-		System.out.println("Flags: 0x" + TCPPacketList.get(i).gettCPflags());
-		System.out.println("Window size value: " + decValue(TCPPacketList.get(i).getWindowSizeValue()));
-		System.out.println("Urgent pointer: " + decValue(TCPPacketList.get(i).getUrgentPointer()));
+
+		interpretedTCPpacket
+				.append("Sequence number (raw): " + decValue(TCPPacketList.get(i).getSequenceNumber()) + "\n");
+		interpretedTCPpacket.append(
+				"Acknowledgment number (raw): " + decValue(TCPPacketList.get(i).getAcknowledgmentNumber()) + "\n");
+		interpretedTCPpacket
+				.append(TCPHeaderLengthBin(TCPPacketList.get(i).getSequenceNumber()) + " .... = Header Length:"
+						+ TCPHeaderLength(TCPPacketList.get(i).getSequenceNumber()) + "bytes" + "\n");
+		interpretedTCPpacket.append("Flags: 0x" + TCPPacketList.get(i).gettCPflags() + "\n");
+		interpretedTCPpacket.append("Window size value: " + decValue(TCPPacketList.get(i).getWindowSizeValue()) + "\n");
+		interpretedTCPpacket.append("Urgent pointer: " + decValue(TCPPacketList.get(i).getUrgentPointer()) + "\n");
+
 		if (TCPPacketList.get(i).getOptionOrData() != null)
-			System.out.println("Option|data: " + TCPPacketList.get(i).getOptionOrData());
+			interpretedTCPpacket.append("Option|data: " + TCPPacketList.get(i).getOptionOrData() + "\n");
+		return interpretedTCPpacket.toString();
 	}
 
+	/*
+	 * 패킷이 UDP일 경우의 변환
+	 */
 	@Override
-	public void packetUDPInterpreter(int index) {
+	public String createUDPInterpreter(int index) {
 		int i = index;
-		
-		System.out.println("Length: " + decValue(UDPPacketList.get(i).getLength()));
-		System.out.println("Checksum: 0x" + UDPPacketList.get(i).getUDPchecksum());
-		System.out.println("Data ("+ (UDPPacketList.get(i).getData().length()/2) + " bytes): " + UDPPacketList.get(i).getData());
+		StringBuilder interpretedUDPpacket = new StringBuilder();
+		interpretedUDPpacket.append("Length: " + decValue(UDPPacketList.get(i).getLength()) + "\n");
+		interpretedUDPpacket.append("Checksum: 0x" + UDPPacketList.get(i).getUDPchecksum() + "\n");
+		interpretedUDPpacket.append("Data (" + (UDPPacketList.get(i).getData().length() / 2) + " bytes): "
+				+ UDPPacketList.get(i).getData() + "\n");
 
+		return interpretedUDPpacket.toString();
 	}
 
 	/**
@@ -342,5 +370,19 @@ public class PacketInterpreter implements ProtocolInterface {
 		ipAddress = sb.toString();
 
 		return ipAddress;
+	}
+
+	/**
+	 * @return 변환된 TCP 패킷을 리턴
+	 */
+	public ArrayList<InterpretedPacketNode> getInterpretedTCPList() {
+		return interpretedTCPList;
+	}
+
+	/**
+	 * @return 변한된 UDP 패킷을 리턴
+	 */
+	public ArrayList<InterpretedPacketNode> getInterpretedUDPList() {
+		return interpretedUDPList;
 	}
 }
