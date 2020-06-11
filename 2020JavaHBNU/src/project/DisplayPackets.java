@@ -16,6 +16,10 @@ public class DisplayPackets implements DisplayInterface {
 		return displayPackets(displayAllPacaketsIterator);
 	}
 
+	/**
+	 * @param iterator
+	 * @return 순서가 붙어있는 Hex binary
+	 */
 	private String displayPackets(Iterator iterator) {
 		StringBuilder sb = new StringBuilder();
 		int i = 1;
