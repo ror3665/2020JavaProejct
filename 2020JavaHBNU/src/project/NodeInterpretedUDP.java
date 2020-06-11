@@ -16,8 +16,8 @@ public class NodeInterpretedUDP extends TransportProtocolComponent {
 		return value;
 	}
 	
-	public void display() {
-		System.out.println("\n" + getValue());
+	public String display() {
+		return "\n" + getValue();
 	}
 	
 

@@ -3,7 +3,8 @@ package project;
 public class NoCommand implements Command {
 
 	@Override
-	public void execute() {
+	public String execute() {
+		return null;
 	}
 
 	

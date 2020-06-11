@@ -11,18 +11,20 @@ public class DisplayPackets implements DisplayInterface {
 	}
 
 	@Override
-	public void display() {
+	public String display() {
 		Iterator displayAllPacaketsIterator = packetIterator.listofPackets();
-		displayPackets(displayAllPacaketsIterator);
+		return displayPackets(displayAllPacaketsIterator);
 	}
 
-	private void displayPackets(Iterator iterator) {
+	private String displayPackets(Iterator iterator) {
+		StringBuilder sb = new StringBuilder();
 		int i = 1;
 		while (iterator.hasNext()) {
 			NodePacket node = (NodePacket)iterator.next();
-			System.out.println("[" + i + "]" + ": " + node.getPacket());
+			sb.append("[" + i + "]" + ": " + node.getPacket() +"\n");
 			i++;
 		}
 		i = 1;
+		return sb.toString();
 	}
 }

@@ -24,7 +24,7 @@ public abstract class TransportProtocolComponent {
 		throw new UnsupportedOperationException();
 	}
 	
-	public void display() {
+	public String display() {
 		throw new UnsupportedOperationException();
 	}
 	

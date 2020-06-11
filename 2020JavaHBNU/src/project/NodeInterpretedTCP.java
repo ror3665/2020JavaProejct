@@ -17,8 +17,8 @@ public class NodeInterpretedTCP extends TransportProtocolComponent {
 		return value;
 	}
 	
-	public void display() {
-		System.out.println("\n" + getValue());
+	public String display() {
+		return "\n" + getValue();
 	}
 	
 	

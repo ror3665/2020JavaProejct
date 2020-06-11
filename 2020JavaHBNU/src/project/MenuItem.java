@@ -16,7 +16,7 @@ public class MenuItem {
 		commands[slot] = command;
 	}
 	
-	public void onButtonWasPushed(int slot) {
-		commands[slot].execute();
+	public String onButtonWasPushed(int slot) {
+		return commands[slot].execute();
 	}
 }

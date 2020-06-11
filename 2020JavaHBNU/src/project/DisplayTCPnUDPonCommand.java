@@ -1,5 +1,6 @@
 package project;
 
+
 public class DisplayTCPnUDPonCommand implements Command {
 
 	Interpreter interpreter;
@@ -9,7 +10,7 @@ public class DisplayTCPnUDPonCommand implements Command {
 	}
 
 	@Override
-	public void execute() {
-		interpreter.displayTCPnUDP();
+	public String execute() {
+		return interpreter.displayTCPnUDP();
 	}
 }

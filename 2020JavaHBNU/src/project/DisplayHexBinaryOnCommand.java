@@ -9,9 +9,8 @@ public class DisplayHexBinaryOnCommand implements Command {
 	}
 
 	@Override
-	public void execute() {
-	
-			interpreter.displayHexBinary();
+	public String execute() {
+			return interpreter.displayHexBinary();
 	}
 
 }

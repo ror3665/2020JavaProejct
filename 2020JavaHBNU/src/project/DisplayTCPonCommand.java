@@ -1,5 +1,7 @@
 package project;
 
+import java.util.ArrayList;
+
 public class DisplayTCPonCommand implements Command {
 
 	Interpreter interpreter;
@@ -9,7 +11,8 @@ public class DisplayTCPonCommand implements Command {
 	}
 	
 	@Override
-	public void execute() {
+	public String execute() {
 		interpreter.displayTCP();
+		return interpreter.displayTCP();
 	}
 }

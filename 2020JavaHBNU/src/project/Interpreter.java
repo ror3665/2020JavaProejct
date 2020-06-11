@@ -43,35 +43,37 @@ public class Interpreter {
 	 * HEX 바이너리 값 출력
 	 * @throws IOException
 	 */
-	public void displayHexBinary()  {
-		displayPackets.display();
+	public String displayHexBinary()  {
+		return displayPackets.display();
 	}
 	
 	/**
 	 * 해석된 TCP & UDP 패킷 출력
+	 * @return 
 	 */
-	public void displayTCPnUDP() {
+	public String displayTCPnUDP() {
 		TransportProtocolComponent allInterpretedPackets = new TransportProtocol("모든 분석 정보");
 		allInterpretedPackets.add(tcpComponent);
 		allInterpretedPackets.add(udpCinoinent);
 		TransportInterpreter interpreter = new TransportInterpreter(allInterpretedPackets);
-		interpreter.display();
+		return interpreter.display();
 	}
 
 	/**
 	 * 해석된 TCP 패킷 출력
 	 */
-	public void displayTCP() {
+	public String displayTCP() {
 		TransportInterpreter interpreter = new TransportInterpreter(tcpComponent);
-		interpreter.display();
+		return interpreter.display();
 	}
 
 	/**
 	 * 해석된 UDP 패킷 출력
+	 * @return 
 	 */
-	public void displayUDP() {
+	public String displayUDP() {
 		TransportInterpreter interpreter = new TransportInterpreter(udpCinoinent);
-		interpreter.display();
+		return interpreter.display();
 
 	}
 }

@@ -3,7 +3,7 @@ package project;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class TransportProtocol extends TransportProtocolComponent {
+public class TransportProtocol extends TransportProtocolComponent{
 	ArrayList transportProtocolComponets = new ArrayList();
 	String value;
 	
@@ -27,12 +27,15 @@ public class TransportProtocol extends TransportProtocolComponent {
 		return value;
 	}
 	
-	public void display() {
+	public String display() {
+		StringBuilder sb = new StringBuilder();
+		
 		Iterator iterator = transportProtocolComponets.iterator();
 		while(iterator.hasNext()) {
 			TransportProtocolComponent transportProtocolComponent = (TransportProtocolComponent)iterator.next();
-			transportProtocolComponent.display();
+			sb.append(transportProtocolComponent.display());
 		}
+		return sb.toString();
 	}
 	
 

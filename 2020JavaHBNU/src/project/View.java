@@ -3,10 +3,14 @@ package project;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -28,7 +32,8 @@ class test_Frame extends JFrame implements ActionListener {
 	private JButton btnInterpretedPacket = new JButton("Interpreted Packet");
 	private JButton btnTCPPacket = new JButton("TCP Packet");
 	private JButton btnUDPPacket = new JButton("UDP Packet");
-	private JTextArea textArea = new JTextArea("표시될 내용");
+	private JTextArea textArea = new JTextArea();
+	private JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 	MenuItem menuItem = new MenuItem();
 	
@@ -50,13 +55,15 @@ class test_Frame extends JFrame implements ActionListener {
 		btnTCPPacket.setBounds(422, 78, 129, 43);
 		btnUDPPacket.setBounds(592, 78, 129, 43);
 		textArea.setBounds(12, 139, 760, 612);
+		scrollPane.setBounds(12, 139, 760, 612);
 		add(btnOpen);
 		add(label);
 		add(btnHexBinary);
 		add(btnInterpretedPacket);
 		add(btnTCPPacket);
 		add(btnUDPPacket);
-		add(textArea);
+		add(scrollPane);
+		scrollPane.setVisible(true);
 	}
 
 	public void start() {
@@ -88,9 +95,21 @@ class test_Frame extends JFrame implements ActionListener {
 				label.setText("파일 경로 : " + chooseHexTextFile.getSelectedFile().toString());	
 			}
 		} else if(e.getSource() == btnHexBinary) {
-			//menuItem.onButtonWasPushed(0);
+			String list = menuItem.onButtonWasPushed(0);
 			textArea.setText("");
-			textArea.append("dawdawdawdd");
+			textArea.append(list);
+		} else if(e.getSource() == btnInterpretedPacket) {
+			String list = menuItem.onButtonWasPushed(1);
+			textArea.setText("");
+			textArea.append(list);
+		} else if(e.getSource() == btnTCPPacket) {
+			String list = menuItem.onButtonWasPushed(2);
+			textArea.setText("");
+			textArea.append(list);
+		} else if(e.getSource() == btnUDPPacket) {
+			String list = menuItem.onButtonWasPushed(3);
+			textArea.setText("");
+			textArea.append(list);
 		}
 	}
 }

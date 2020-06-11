@@ -1,5 +1,6 @@
 package project;
 
+
 public class TransportInterpreter implements DisplayInterface {
 	TransportProtocolComponent allInterpretedPackets;
 	
@@ -8,7 +9,7 @@ public class TransportInterpreter implements DisplayInterface {
 	}
 	
 	@Override
-	public void display() {
-		allInterpretedPackets.display();
+	public String display() {
+		return allInterpretedPackets.display();
 	}
 }
