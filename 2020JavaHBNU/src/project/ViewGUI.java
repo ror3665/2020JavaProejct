@@ -1,29 +1,17 @@
 package project;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class View {
-
-	public static void main(String[] args) {
-
-		test_Frame tf = new test_Frame();
-
-	}
-}
-
-class test_Frame extends JFrame implements ActionListener {
+public class ViewGUI extends JFrame implements ActionListener {
 
 	private JFileChooser chooseHexTextFile = new JFileChooser();
 	private JButton btnOpen = new JButton("¿­±â");
@@ -37,7 +25,7 @@ class test_Frame extends JFrame implements ActionListener {
 
 	MenuItem menuItem = new MenuItem();
 	
-	public test_Frame() {
+	public ViewGUI() {
 		super();
 		this.init();
 		this.start();
@@ -113,3 +101,4 @@ class test_Frame extends JFrame implements ActionListener {
 		}
 	}
 }
+
