@@ -9,10 +9,12 @@ public abstract class PacketInterpreter {
 	private ArrayList<NodeBasicPackeHex> basicPacketList;
 	private ArrayList<NodeTCPPacketHex> TCPPacketList;
 	private ArrayList<NodeUDPPacketHex> UDPPacketList;
-	protected ArrayList<NodeInterpretedPacket> interpretedTCPList;
-	protected ArrayList<NodeInterpretedPacket> interpretedUDPList;
 	
-	final ArrayList<NodeInterpretedPacket> prepareInterpreter() {
+	protected ArrayList<NodePacket> hexBinaryList;
+	protected ArrayList<NodePacket> interpretedTCPList;
+	protected ArrayList<NodePacket> interpretedUDPList;
+	
+	final ArrayList<NodePacket> prepareInterpreter() {
 		trimSpacePacketList();
 		organizePacket();
 		createPacketInterpreter();
@@ -27,11 +29,14 @@ public abstract class PacketInterpreter {
 		trimmedPacketList = new ArrayList<>();
 		TCPPacketList = new ArrayList<>();
 		UDPPacketList = new ArrayList<>();
+		
+		hexBinaryList = new ArrayList<>();
 
 		for (int i = 0; i < hexFileInputStream.getPacketList().size(); i++) {
-			String packet = hexFileInputStream.getPacketList().get(i).getPacket();
+			hexBinaryList.add(new NodePacket(i, hexFileInputStream.getPacketList().get(i)));
+			String packet = hexFileInputStream.getPacketList().get(i);
 			packet = packet.replaceAll(" ", "");
-			trimmedPacketList.add(new NodePacket(packet));
+			trimmedPacketList.add(new NodePacket(i, packet));
 		}
 	}
 	
@@ -56,7 +61,7 @@ public abstract class PacketInterpreter {
 		basicPacketList = new ArrayList<>();
 
 		for (int i = 0; i < trimmedPacketList.size(); i++) {
-			String packet = trimmedPacketList.get(i).getPacket();
+			String packet = trimmedPacketList.get(i).getValue();
 			frame = Integer.toString(packet.length());
 			destinationMacAddress = packet.substring(0, 12);
 			sourceMacAddress = packet.substring(12, 24);
@@ -147,10 +152,10 @@ public abstract class PacketInterpreter {
 
 			if (basicPacketList.get(i).getProcotolName().equals("06")) {
 				interpretedPacket.append(createTCPInterpreter(Integer.parseInt(basicPacketList.get(i).getID())));
-				interpretedTCPList.add(new NodeInterpretedPacket(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
+				interpretedTCPList.add(new NodePacket(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
 			} else if (basicPacketList.get(i).getProcotolName().equals("11")) {
 				interpretedPacket.append(createUDPInterpreter(Integer.parseInt(basicPacketList.get(i).getID())));
-				interpretedUDPList.add(new NodeInterpretedPacket(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
+				interpretedUDPList.add(new NodePacket(Integer.parseInt(basicPacketList.get(i).getID()), interpretedPacket.toString()));
 			}
 
 			interpretedPacket.setLength(0); // set a stringBuffer size to '0' size
@@ -196,7 +201,7 @@ public abstract class PacketInterpreter {
 		return interpretedUDPpacket.toString();
 	}
 	
-	abstract ArrayList<NodeInterpretedPacket> createProtocolInterpreter();
+	abstract ArrayList<NodePacket> createProtocolInterpreter();
 	
 	
 	/**

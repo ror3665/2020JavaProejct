@@ -2,14 +2,13 @@ package project;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
-public class HexFileInputStream implements PacketIteratorInterface {
+public class HexFileInputStream {
 	private static HexFileInputStream uniqueInstance = new HexFileInputStream(); //Singleton
-	private ArrayList<NodePacket> packetList;
+	private ArrayList<String> packetList;
 	private String path;
 	
 	private HexFileInputStream() {
@@ -54,7 +53,7 @@ public class HexFileInputStream implements PacketIteratorInterface {
 	 */
 	private void addPacket(StringBuilder sb) {
 		String newLine = sb.toString();
-		packetList.add(new NodePacket(newLine));
+		packetList.add(newLine);
 	}
 
 	/**
@@ -66,13 +65,7 @@ public class HexFileInputStream implements PacketIteratorInterface {
 		return sLine.substring(6, indexOfEnd) + " ";
 	}
 
-	public ArrayList<NodePacket> getPacketList() {
+	public ArrayList<String> getPacketList() {
 		return packetList;
 	}
-	
-	@Override
-	public Iterator listofPackets() {
-		return packetList.iterator();
-	}
-
 }

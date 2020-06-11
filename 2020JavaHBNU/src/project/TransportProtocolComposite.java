@@ -3,11 +3,11 @@ package project;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class TransportProtocol extends TransportProtocolComponent{
-	ArrayList transportProtocolComponets = new ArrayList();
+public class TransportProtocolComposite extends TransportProtocolComponent{
+	ArrayList<TransportProtocolComponent> transportProtocolComponets = new ArrayList<>();
 	String value;
 	
-	public TransportProtocol(String value) {
+	public TransportProtocolComposite(String value) {
 		this.value = value;
 	}
 	
@@ -29,12 +29,14 @@ public class TransportProtocol extends TransportProtocolComponent{
 	
 	public String display() {
 		StringBuilder sb = new StringBuilder();
-		
-		Iterator iterator = transportProtocolComponets.iterator();
+	
+		Iterator<TransportProtocolComponent> iterator = transportProtocolComponets.iterator();
 		while(iterator.hasNext()) {
 			TransportProtocolComponent transportProtocolComponent = (TransportProtocolComponent)iterator.next();
 			sb.append(transportProtocolComponent.display());
+			
 		}
+	
 		return sb.toString();
 	}
 	

@@ -28,7 +28,7 @@ public abstract class TransportProtocolComponent {
 		throw new UnsupportedOperationException();
 	}
 	
-	public Iterator createIterator() {
+	public Iterator<NodePacket> createIterator() {
 		throw new UnsupportedOperationException();
 	}
 }

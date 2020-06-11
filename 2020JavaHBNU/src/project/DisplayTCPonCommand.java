@@ -1,7 +1,5 @@
 package project;
 
-import java.util.ArrayList;
-
 public class DisplayTCPonCommand implements Command {
 
 	Interpreter interpreter;

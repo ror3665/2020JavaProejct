@@ -2,10 +2,11 @@ package project;
 
 import java.util.ArrayList;
 
-public class InterpretedTCP extends PacketInterpreter {
+public class HexBinary extends PacketInterpreter{
 
 	@Override
 	ArrayList<NodePacket> createProtocolInterpreter() {
-		return interpretedTCPList;
+		return hexBinaryList;
 	}
+
 }

@@ -1,16 +1,26 @@
 package project;
 
-public class NodePacket {
+public class NodePacket extends TransportProtocolComponent {
 	
-	private String packet;
+	private int ID;
+	private String value;
 
-	public NodePacket(String packet) {
+	public NodePacket(int ID, String value) {
 		super();
-		this.packet = packet;
+		this.ID = ID;
+		this.value = value;
+	}
+	
+	public int getID() {
+		return ID;
 	}
 
-	public String getPacket() {
-		return packet;
+	public String getValue() {
+		return value;
+	}
+	
+	public String display() {
+		return "\n" + getValue();
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class InterpretedUDP extends PacketInterpreter {
 
 	@Override
-	ArrayList<NodeInterpretedPacket> createProtocolInterpreter() {
+	ArrayList<NodePacket> createProtocolInterpreter() {
 		return interpretedUDPList;
 	}
 }

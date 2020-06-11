@@ -1,14 +1,13 @@
 package project;
 
 
-public class TransportInterpreter implements DisplayInterface {
+public class TransportInterpreterItem extends TransportProtocolComponent{
 	TransportProtocolComponent allInterpretedPackets;
 	
-	public TransportInterpreter(TransportProtocolComponent allInterpretedPackets) {
+	public TransportInterpreterItem(TransportProtocolComponent allInterpretedPackets) {
 		this.allInterpretedPackets = allInterpretedPackets;
 	}
 	
-	@Override
 	public String display() {
 		return allInterpretedPackets.display();
 	}
