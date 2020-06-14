@@ -1,4 +1,4 @@
-package interpretion;
+package interpretation;
 
 import formula.PacketFormula;
 import organization.SeparatedPacketNode;

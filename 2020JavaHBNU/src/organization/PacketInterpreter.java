@@ -2,10 +2,11 @@ package organization;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import interpretion.IPHeaderStrategy;
-import interpretion.InterpretableStrategy;
-import interpretion.TCPStrategy;
-import interpretion.UDPStrategy;
+
+import interpretation.IPHeaderStrategy;
+import interpretation.InterpretableStrategy;
+import interpretation.TCPStrategy;
+import interpretation.UDPStrategy;
 
 public class PacketInterpreter extends OrganizePacketDecorator {
 	private InterpretableStrategy interpretableStrategy;

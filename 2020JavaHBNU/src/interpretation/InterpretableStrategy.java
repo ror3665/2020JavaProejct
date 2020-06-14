@@ -1,4 +1,4 @@
-package interpretion;
+package interpretation;
 
 import organization.SeparatedPacketNode;
 

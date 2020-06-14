@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import command.InterpretedPacketonCommand;
 import command.Interpreter;
 import command.MenuItem;
