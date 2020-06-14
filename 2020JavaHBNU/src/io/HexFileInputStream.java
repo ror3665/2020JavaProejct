@@ -27,11 +27,15 @@ public class HexFileInputStream {
 		if (file.exists()) {
 			BufferedReader inFile = new BufferedReader(new FileReader(file));
 			while ((sLine = inFile.readLine()) != null) {
-				if (sLine.equals("")) {
-					addPacket(sb);
-					sb.delete(0, sb.length());
-				} else
-					sb.append(trimUpPacket(sLine));
+				try {
+					if (sLine.equals("")) {
+						addPacket(sb);
+						sb.delete(0, sb.length());
+					} else
+						sb.append(trimUpPacket(sLine));
+				} catch (IndexOutOfBoundsException e) {
+					e.printStackTrace();
+				}
 			}
 			addPacket(sb);
 			inFile.close();
